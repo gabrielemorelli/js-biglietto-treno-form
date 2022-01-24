@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+}
+body{
+  background-color: violet;
+  
+}
+
+.titolo{
+    text-align: center;
+}
+.container{
+    background-color: white;
+     width: 60%;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col{
+    width: 20%;
+}
+
+.col-center{
+    width: 20%;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container p{
+text-transform: uppercase;
+color: #b91459;
+}
+
+#name{
+   border: 1px solid #b91459; 
+}
+
+#km{
+    border:  1px solid #b91459; 
+}
+
+#eta{
+    border:  1px solid #b91459
+}
+
+
