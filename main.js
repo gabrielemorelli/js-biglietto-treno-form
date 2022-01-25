@@ -1,59 +1,66 @@
-let name = document.getElementById('name');
-let km = document.getElementById('km');
-let eta = document.getElementById('eta');
-let button = document.getElementById('elabora');
+
+
+const bottone = document.getElementById('elabora');
 
 
 
-button.addEventListener('click',
+bottone.addEventListener('click',
     function () {
 
-        if (name.value == '' || km.value=='') {
-             alert("Nome o km  vuoto")
-             name.value = "";
-             km.value = ""; }
+        const nome = document.getElementById('name').value;
+        console.log(nome);
+        const kmdapercorrere = document.getElementById('km').value;;
+        const fasciaeta = document.getElementById('eta').value;;
+        const costokm = 0.21;
+        let prezzobiglietto = kmdapercorrere * costokm;
+        let offerta = 'Biglietto intero'
+
+        if (nome == '' || kmdapercorrere == '') {
+            alert("Nome o km  vuoto")
+            nome = "";
+            kmdapercorrere = "";
+        }
         else {
-            let costokm = 0.21;
-            let prezzo = km.value * costokm;
-            console.log(prezzo);
 
-            if (eta.value == "minorenne") {
-                console.log(prezzo);
 
-                var sconto = (km.value * costokm * 20) / 100;
-                console.log(sconto);
-
+            if (fasciaeta == "minorenne") {
+                prezzobiglietto = prezzobiglietto - (prezzobiglietto * 20 / 100)
+                offerta = 'Biglietto ridotto'
             }
 
-            else if (eta.value == "over-65") {
-                var sconto = (km.value * costokm * 40) / 100;
-                console.log(sconto);
-
+            else if (fasciaeta == "over-65") {
+                prezzobiglietto = prezzobiglietto - (prezzobiglietto * 40 / 100)
+                offerta = 'Biglietto over65'
             }
-
-
-            else {
-                var sconto = 0;
-            }
-
-            let prezzofinale = prezzo - sconto;
-            console.log(prezzofinale);
-            document.getElementById('out_name').value=name.value; 
-            document.getElementById('biglietto').value=prezzofinale; 
-            
-          
         }
 
-
+        let biglietto = document.getElementById('biglietto');
+ 
+        biglietto.classList.remove('hidden');
+        document.getElementById('out_prezzobiglietto').innerHTML = prezzobiglietto.toFixed(2) + " Euro";
+        document.getElementById('out_name').innerHTML = nome;
+      
+        document.getElementById('out_offerta').innerHTML = offerta;
+        const carrozza = Math.floor((Math.random() * 9)) + 1;
+        document.getElementById('out_carrozza').innerHTML = carrozza;
+        const ccp = Math.floor((Math.random() * 1000)) + 9000;
+        document.getElementById('out_ccp').innerHTML = ccp;
     }
+
+
+    
 
 )
 
-
+const annulla = document.getElementById('annulla');
 annulla.addEventListener('click',
     function () {
-        name.value = "";
-        km.value = "";
+        let biglietto = document.getElementById('biglietto');
+        biglietto.classList.add('hidden');
+
+        document.getElementById('name').value = "";
+        document.getElementById('km').value = "";
+        document.getElementById('eta').value = "minorenne";
 
     }
 )
